@@ -8,13 +8,15 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    let userDefaults = UserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +29,7 @@ class LoginViewController: UIViewController {
     
     func setUpElements() {
         errorLabel.alpha = 0
+        self.passwordTextField.delegate = self
     }
 
     func validateForm() -> String? {
@@ -39,6 +42,11 @@ class LoginViewController: UIViewController {
     func showError(_ message:String) {
         errorLabel.text = message
         errorLabel.alpha = 1
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
     }
     
     func navigateHome() {
@@ -68,6 +76,8 @@ class LoginViewController: UIViewController {
                     self.showError(err!.localizedDescription)
                 }
                 else {
+                    self.userDefaults.setValue(result!.user.uid,forKey: "USER_ID")
+                    
                     self.navigateHome()
                 }
             }

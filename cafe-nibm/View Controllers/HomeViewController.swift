@@ -8,22 +8,27 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    @IBOutlet weak var homeLabel: UILabel!
+    @IBOutlet weak var btnSignOut: UIButton!
+    
+    let userDefaults = UserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let user = userDefaults.value(forKey: "USER_ID")
+        print(user!)
+//        homeLabel.text = user.name
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func onSignOutButtonClick(_ sender: Any) {
+        userDefaults.removeObject(forKey: "USER_ID")
+        
+        let loginVC = storyboard?.instantiateViewController(identifier: Constants.Storyboard.loginViewController) as? LoginViewController
+        
+        view.window?.rootViewController = loginVC
+        view.window?.makeKeyAndVisible()
+        
     }
-    */
-
 }
