@@ -13,7 +13,8 @@ class AccountViewController: UIViewController {
     @IBOutlet weak var lblUserName: UILabel!
     @IBOutlet weak var lblEmail: UILabel!
     @IBOutlet weak var lblMobile: UILabel!
-
+    @IBOutlet weak var btnSignOut: UIButton!
+    
     let userDefaults = UserDefaults()
     var userData = {}
 
@@ -51,5 +52,15 @@ class AccountViewController: UIViewController {
                         self.lblMobile.text = "Mobile - \(userData["mobile"] as? String ?? "-")"
                     }
             }
+    }
+    
+    
+    @IBAction func onSignOutBtnClick(_ sender: Any) {
+        userDefaults.removeObject(forKey: "USER_ID")
+        
+        let loginVC = storyboard?.instantiateViewController(identifier: Constants.Storyboard.loginViewController) as? LoginViewController
+        
+        view.window?.rootViewController = loginVC
+        view.window?.makeKeyAndVisible()
     }
 }

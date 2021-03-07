@@ -244,12 +244,21 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZE-sw-bW5">
+                                <rect key="frame" x="130" y="371" width="60" height="30"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="onSignOutBtnClick:" destination="F1z-fV-Bn8" eventType="touchUpInside" id="zKr-gR-CVY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ELZ-pZ-Kz6"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="cZE-sw-bW5" firstAttribute="centerX" secondItem="HfG-fT-Sea" secondAttribute="centerX" id="Dsv-jn-FWM"/>
                             <constraint firstItem="dDT-Mq-ngQ" firstAttribute="centerX" secondItem="HfG-fT-Sea" secondAttribute="centerX" id="Dwz-ja-BEK"/>
                             <constraint firstItem="7FN-ZP-ufb" firstAttribute="top" secondItem="dDT-Mq-ngQ" secondAttribute="bottom" constant="40" id="Xcn-Us-41U"/>
+                            <constraint firstItem="ELZ-pZ-Kz6" firstAttribute="bottom" secondItem="cZE-sw-bW5" secondAttribute="bottom" constant="30" id="Z4w-Ni-1Z1"/>
                             <constraint firstItem="dDT-Mq-ngQ" firstAttribute="top" secondItem="ELZ-pZ-Kz6" secondAttribute="top" constant="20" id="dFD-lF-jhN"/>
                             <constraint firstItem="ELZ-pZ-Kz6" firstAttribute="trailing" secondItem="7FN-ZP-ufb" secondAttribute="trailing" constant="20" id="i35-Jx-f7M"/>
                             <constraint firstItem="7FN-ZP-ufb" firstAttribute="leading" secondItem="ELZ-pZ-Kz6" secondAttribute="leading" constant="20" id="qfc-4G-Uvg"/>
@@ -257,6 +266,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" id="B28-FF-u69"/>
                     <connections>
+                        <outlet property="btnSignOut" destination="cZE-sw-bW5" id="dkb-bb-y1Q"/>
                         <outlet property="lblEmail" destination="ye4-aH-aMu" id="Df3-mO-TQI"/>
                         <outlet property="lblMobile" destination="hR3-Ox-MMM" id="IPC-Y5-9Mu"/>
                         <outlet property="lblUserName" destination="PPg-vs-lBn" id="UCn-zy-m2B"/>
@@ -274,24 +284,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eFH-GO-tAk">
-                                <rect key="frame" x="250" y="10" width="60" height="30"/>
-                                <state key="normal" title="Sign Out"/>
-                                <connections>
-                                    <action selector="onSignOutButtonClick:" destination="AGd-eb-BxA" eventType="touchUpInside" id="Gru-GR-dZw"/>
-                                </connections>
-                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sZV-ol-sSw">
+                                <rect key="frame" x="5" y="100" width="310" height="331"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="uKH-CQ-ECX">
+                                        <rect key="frame" x="0.0" y="28" width="310" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uKH-CQ-ECX" id="t67-Mi-F0X">
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ6-0q-RqF">
+                                                    <rect key="frame" x="34" y="5" width="42" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2jM-JK-RQk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="2jM-JK-RQk" firstAttribute="trailing" secondItem="eFH-GO-tAk" secondAttribute="trailing" constant="10" id="P1Y-Vm-vfd"/>
-                            <constraint firstItem="eFH-GO-tAk" firstAttribute="top" secondItem="2jM-JK-RQk" secondAttribute="top" constant="10" id="WWJ-lL-RYd"/>
+                            <constraint firstItem="sZV-ol-sSw" firstAttribute="leading" secondItem="2jM-JK-RQk" secondAttribute="leading" constant="5" id="43C-jI-wOO"/>
+                            <constraint firstItem="2jM-JK-RQk" firstAttribute="trailing" secondItem="sZV-ol-sSw" secondAttribute="trailing" constant="5" id="4ZJ-5v-iDq"/>
+                            <constraint firstItem="sZV-ol-sSw" firstAttribute="top" secondItem="2jM-JK-RQk" secondAttribute="top" constant="100" id="qDp-Ut-eI0"/>
+                            <constraint firstItem="2jM-JK-RQk" firstAttribute="bottom" secondItem="sZV-ol-sSw" secondAttribute="bottom" id="qrg-S2-lst"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="oFY-du-90A"/>
                     <connections>
-                        <outlet property="btnSignOut" destination="eFH-GO-tAk" id="Ic7-nr-o50"/>
+                        <outlet property="tblItems" destination="sZV-ol-sSw" id="PVc-1y-L94"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qz6-Rb-hhT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
