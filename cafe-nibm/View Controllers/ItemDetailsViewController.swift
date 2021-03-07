@@ -37,7 +37,7 @@ class ItemDetailsViewController: UIViewController {
             
             basket = oldBasket!
             
-            let newItem = Basket(name: item!.name, qty: 1, total: 100.00)
+            let newItem = Basket(name: item!.name, qty: 1, total: item!.price)
             
             basket.append(newItem)
             

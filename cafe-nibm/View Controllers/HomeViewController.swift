@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tblItems: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var tblBasket: UITableView!
-    
+    @IBOutlet weak var btnPlaceOrder: UIButton!
     
     @Published var items = [Item]()
     var basket: [Basket] = []
@@ -28,6 +28,11 @@ class HomeViewController: UIViewController {
             let userBasket = try? PropertyListDecoder().decode(Array<Basket>.self, from: data)
             
             basket = userBasket!
+            
+            if((basket.count) > 0){
+                btnPlaceOrder.isHidden = false
+            }
+            
             self.tblBasket.reloadData()
             
         }
@@ -51,7 +56,7 @@ class HomeViewController: UIViewController {
         tblBasket.delegate = self
         tblBasket.dataSource = self
         
-        
+        btnPlaceOrder.isHidden = true
     }
     
     
@@ -92,6 +97,8 @@ class HomeViewController: UIViewController {
     }
     
     
+    @IBAction func onPlaceOrderBtnClick(_ sender: Any) {
+    }
 }
 
 extension HomeViewController: UITableViewDelegate {
@@ -103,6 +110,11 @@ extension HomeViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    
+    
+    
+    
 }
 
 
@@ -147,6 +159,11 @@ extension HomeViewController: UITableViewDataSource {
                 {
                     self.basket.remove(at: indexPath.row)
                     saveBasket(self.basket)
+                    
+                    print(self.basket.count)
+                    self.btnPlaceOrder.isHidden = (self.basket.count) == 0
+                    
+                    
                     self.tblBasket.reloadData()
                 }
             

@@ -287,7 +287,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="sZV-ol-sSw">
-                                <rect key="frame" x="5" y="100" width="310" height="331"/>
+                                <rect key="frame" x="5" y="100" width="310" height="301"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="74" id="uKH-CQ-ECX" customClass="ItemsTableCell" customModule="cafe_nibm" customModuleProvider="target">
@@ -377,6 +377,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgU-cz-crZ">
+                                <rect key="frame" x="110" y="381" width="100" height="30"/>
+                                <color key="backgroundColor" red="0.31766825910000002" green="0.66972297430000005" blue="0.94905716179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="clD-xf-yzm"/>
+                                </constraints>
+                                <state key="normal" title="Place Order">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onPlaceOrderBtnClick:" destination="AGd-eb-BxA" eventType="touchUpInside" id="sqm-u0-SAx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2jM-JK-RQk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -385,11 +398,13 @@
                             <constraint firstItem="2jM-JK-RQk" firstAttribute="trailing" secondItem="sZV-ol-sSw" secondAttribute="trailing" constant="5" id="4ZJ-5v-iDq"/>
                             <constraint firstItem="sZV-ol-sSw" firstAttribute="top" secondItem="XXE-eX-H4n" secondAttribute="bottom" constant="2" id="5Ep-7B-c39"/>
                             <constraint firstItem="jHd-cE-1lo" firstAttribute="centerX" secondItem="dv8-EX-lVT" secondAttribute="centerX" id="YJd-20-nXw"/>
+                            <constraint firstItem="jgU-cz-crZ" firstAttribute="centerX" secondItem="dv8-EX-lVT" secondAttribute="centerX" id="dG0-6P-Tku"/>
                             <constraint firstItem="jHd-cE-1lo" firstAttribute="centerY" secondItem="dv8-EX-lVT" secondAttribute="centerY" id="iZn-bQ-EWT"/>
                             <constraint firstItem="XXE-eX-H4n" firstAttribute="top" secondItem="dv8-EX-lVT" secondAttribute="top" id="ihN-wa-Sfo"/>
                             <constraint firstItem="sZV-ol-sSw" firstAttribute="top" secondItem="2jM-JK-RQk" secondAttribute="top" constant="100" id="qDp-Ut-eI0"/>
                             <constraint firstItem="2jM-JK-RQk" firstAttribute="trailing" secondItem="XXE-eX-H4n" secondAttribute="trailing" constant="10" id="qrI-lj-gVZ"/>
-                            <constraint firstItem="2jM-JK-RQk" firstAttribute="bottom" secondItem="sZV-ol-sSw" secondAttribute="bottom" id="qrg-S2-lst"/>
+                            <constraint firstItem="2jM-JK-RQk" firstAttribute="bottom" secondItem="sZV-ol-sSw" secondAttribute="bottom" constant="30" id="qrg-S2-lst"/>
+                            <constraint firstItem="2jM-JK-RQk" firstAttribute="bottom" secondItem="jgU-cz-crZ" secondAttribute="bottom" constant="20" id="vkc-Jk-QQ9"/>
                             <constraint firstItem="XXE-eX-H4n" firstAttribute="leading" secondItem="2jM-JK-RQk" secondAttribute="leading" constant="10" id="who-jy-bMH"/>
                         </constraints>
                     </view>
@@ -397,6 +412,7 @@
                         <inset key="imageInsets" minX="-5" minY="-5" maxX="-5" maxY="-5"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="btnPlaceOrder" destination="jgU-cz-crZ" id="5oA-7J-sWH"/>
                         <outlet property="spinner" destination="jHd-cE-1lo" id="m3z-Kz-s29"/>
                         <outlet property="tblBasket" destination="XXE-eX-H4n" id="WIF-Pg-dPz"/>
                         <outlet property="tblItems" destination="sZV-ol-sSw" id="PVc-1y-L94"/>
