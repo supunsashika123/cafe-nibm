@@ -13,12 +13,13 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tblItems: UITableView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var tblBasket: UITableView!
+    
     
     @Published var items = [Item]()
     var basket: [Basket] = []
     
     let userDefaults = UserDefaults()
-    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -27,6 +28,8 @@ class HomeViewController: UIViewController {
             let userBasket = try? PropertyListDecoder().decode(Array<Basket>.self, from: data)
             
             basket = userBasket!
+            self.tblBasket.reloadData()
+            
         }
     }
     
@@ -45,7 +48,12 @@ class HomeViewController: UIViewController {
         tblItems.delegate = self
         tblItems.dataSource = self
         
+        tblBasket.delegate = self
+        tblBasket.dataSource = self
+        
+        
     }
+    
     
     func fetchItems(completed:@escaping ()-> ()) {
         let db = Firestore.firestore()
@@ -81,9 +89,11 @@ class HomeViewController: UIViewController {
             destination.item = items[(tblItems.indexPathForSelectedRow?.row)!]
         }
     }
+    
+    
 }
 
-extension HomeViewController: UITableViewDelegate{
+extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         performSegue(withIdentifier: "showItemDetails", sender: self)
@@ -92,29 +102,61 @@ extension HomeViewController: UITableViewDelegate{
 }
 
 
-extension HomeViewController: UITableViewDataSource{
+extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        if tableView == self.tblItems {
+            return items.count
+        }
+        
+        if tableView == self.tblBasket {
+            return basket.count
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemsTableCell
         
-        let itemData = items[indexPath.row]
         
-        cell.title?.text = itemData.name
-        cell.info?.text = itemData.description
-        cell.price?.text = "LKR \(String(format: "%.2f", itemData.price))"
         
-        return cell
+        
+        
+        if tableView == self.tblItems {
+            let itemData = items[indexPath.row]
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemsTableCell
+            
+            cell.title?.text = itemData.name
+            cell.info?.text = itemData.description
+            cell.price?.text = "LKR \(String(format: "%.2f", itemData.price))"
+            
+            return cell
+        }
+        
+        if tableView == self.tblBasket {
+            let cell2 = tableView.dequeueReusableCell(withIdentifier: "basketCell", for: indexPath) as! BasketTableCell
+            
+            let itemData = basket[indexPath.row]
+            
+            cell2.itemName?.text = itemData.name
+            
+            return cell2
+        }
+        return UITableViewCell()
     }
     
 }
+
 
 class ItemsTableCell: UITableViewCell {
     @IBOutlet weak var title : UILabel!
     @IBOutlet weak var info : UILabel!
     @IBOutlet weak var price : UILabel!
+}
+
+class BasketTableCell: UITableViewCell {
+    
+    @IBOutlet weak var itemName: UILabel!
 }

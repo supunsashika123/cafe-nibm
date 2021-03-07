@@ -339,16 +339,49 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jHd-cE-1lo">
                                 <rect key="frame" x="141.5" y="221.5" width="37" height="37"/>
                             </activityIndicatorView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XXE-eX-H4n">
+                                <rect key="frame" x="10" y="0.0" width="300" height="98"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="basketCell" id="oeN-pc-2cO" customClass="BasketTableCell" customModule="cafe_nibm" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="300" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oeN-pc-2cO" id="whZ-Ch-bc1">
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFT-Sq-FWw">
+                                                    <rect key="frame" x="129.5" y="11.5" width="41.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HFT-Sq-FWw" firstAttribute="centerY" secondItem="whZ-Ch-bc1" secondAttribute="centerY" id="CZD-A9-fAh"/>
+                                                <constraint firstItem="HFT-Sq-FWw" firstAttribute="centerX" secondItem="whZ-Ch-bc1" secondAttribute="centerX" id="W73-wV-fDm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemName" destination="HFT-Sq-FWw" id="Z83-bO-Wrn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2jM-JK-RQk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sZV-ol-sSw" firstAttribute="leading" secondItem="2jM-JK-RQk" secondAttribute="leading" constant="5" id="43C-jI-wOO"/>
                             <constraint firstItem="2jM-JK-RQk" firstAttribute="trailing" secondItem="sZV-ol-sSw" secondAttribute="trailing" constant="5" id="4ZJ-5v-iDq"/>
+                            <constraint firstItem="sZV-ol-sSw" firstAttribute="top" secondItem="XXE-eX-H4n" secondAttribute="bottom" constant="2" id="5Ep-7B-c39"/>
                             <constraint firstItem="jHd-cE-1lo" firstAttribute="centerX" secondItem="dv8-EX-lVT" secondAttribute="centerX" id="YJd-20-nXw"/>
                             <constraint firstItem="jHd-cE-1lo" firstAttribute="centerY" secondItem="dv8-EX-lVT" secondAttribute="centerY" id="iZn-bQ-EWT"/>
+                            <constraint firstItem="XXE-eX-H4n" firstAttribute="top" secondItem="dv8-EX-lVT" secondAttribute="top" id="ihN-wa-Sfo"/>
                             <constraint firstItem="sZV-ol-sSw" firstAttribute="top" secondItem="2jM-JK-RQk" secondAttribute="top" constant="100" id="qDp-Ut-eI0"/>
+                            <constraint firstItem="2jM-JK-RQk" firstAttribute="trailing" secondItem="XXE-eX-H4n" secondAttribute="trailing" constant="10" id="qrI-lj-gVZ"/>
                             <constraint firstItem="2jM-JK-RQk" firstAttribute="bottom" secondItem="sZV-ol-sSw" secondAttribute="bottom" id="qrg-S2-lst"/>
+                            <constraint firstItem="XXE-eX-H4n" firstAttribute="leading" secondItem="2jM-JK-RQk" secondAttribute="leading" constant="10" id="who-jy-bMH"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="homeIcon" id="oFY-du-90A">
@@ -356,6 +389,7 @@
                     </tabBarItem>
                     <connections>
                         <outlet property="spinner" destination="jHd-cE-1lo" id="m3z-Kz-s29"/>
+                        <outlet property="tblBasket" destination="XXE-eX-H4n" id="WIF-Pg-dPz"/>
                         <outlet property="tblItems" destination="sZV-ol-sSw" id="PVc-1y-L94"/>
                         <segue destination="84x-DE-UpO" kind="show" identifier="showItemDetails" id="KAg-KD-0Cb"/>
                     </connections>
