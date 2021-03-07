@@ -15,8 +15,20 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     @Published var items = [Item]()
+    var basket: [Basket] = []
     
     let userDefaults = UserDefaults()
+    
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if let data = UserDefaults.standard.value(forKey:"BASKET") as? Data {
+            let userBasket = try? PropertyListDecoder().decode(Array<Basket>.self, from: data)
+            
+            basket = userBasket!
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +57,7 @@ class HomeViewController: UIViewController {
                 print("Error getting documents: \(err)")
             } else {
                 
-                for itm in snapshot!.documents{
+                for itm in snapshot!.documents {
                     do {
                         let objItem = try itm.data(as: Item.self)
                         self.items.append(objItem!)

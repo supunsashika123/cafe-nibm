@@ -1,5 +1,5 @@
 //
-//  Items.swift
+//  Item.swift
 //  cafe-nibm
 //
 //  Created by Supun Sashika on 2021-03-07.
