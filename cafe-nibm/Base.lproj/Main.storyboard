@@ -356,9 +356,18 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtG-qV-Y2L">
+                                                    <rect key="frame" x="235" y="7" width="55" height="30"/>
+                                                    <state key="normal" title="Remove"/>
+                                                    <connections>
+                                                        <action selector="onRemoveBtnClick:" destination="oeN-pc-2cO" eventType="touchUpInside" id="9Et-gl-ySK"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="mtG-qV-Y2L" secondAttribute="trailing" constant="10" id="673-p0-hCn"/>
                                                 <constraint firstItem="HFT-Sq-FWw" firstAttribute="centerY" secondItem="whZ-Ch-bc1" secondAttribute="centerY" id="CZD-A9-fAh"/>
+                                                <constraint firstItem="mtG-qV-Y2L" firstAttribute="centerY" secondItem="whZ-Ch-bc1" secondAttribute="centerY" id="FTs-VW-2Ce"/>
                                                 <constraint firstItem="HFT-Sq-FWw" firstAttribute="centerX" secondItem="whZ-Ch-bc1" secondAttribute="centerX" id="W73-wV-fDm"/>
                                             </constraints>
                                         </tableViewCellContentView>

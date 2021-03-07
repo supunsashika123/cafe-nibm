@@ -85,6 +85,7 @@ class HomeViewController: UIViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let destination = segue.destination as? ItemDetailsViewController {
             destination.item = items[(tblItems.indexPathForSelectedRow?.row)!]
         }
@@ -96,9 +97,12 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        performSegue(withIdentifier: "showItemDetails", sender: self)
+        if(tableView == self.tblItems) {
+            performSegue(withIdentifier: "showItemDetails", sender: self)
+        }
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    
 }
 
 
@@ -117,9 +121,6 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-        
         
         
         
@@ -142,12 +143,23 @@ extension HomeViewController: UITableViewDataSource {
             
             cell2.itemName?.text = itemData.name
             
+            cell2.basketTableRowObject =
+                {
+                    self.basket.remove(at: indexPath.row)
+                    saveBasket(self.basket)
+                    self.tblBasket.reloadData()
+                }
+            
             return cell2
         }
         return UITableViewCell()
     }
     
+    
 }
+
+
+
 
 
 class ItemsTableCell: UITableViewCell {
@@ -159,4 +171,23 @@ class ItemsTableCell: UITableViewCell {
 class BasketTableCell: UITableViewCell {
     
     @IBOutlet weak var itemName: UILabel!
+    
+    var basketTableRowObject : (() -> Void)? = nil
+    
+    override func awakeFromNib()
+    {
+        super.awakeFromNib()
+        
+    }
+    
+    @IBAction func onRemoveBtnClick(_ sender: Any) {
+        
+        if let btnAction = self.basketTableRowObject
+        {
+            btnAction()
+            
+        }
+    }
+    
+
 }

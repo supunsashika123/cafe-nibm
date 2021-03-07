@@ -33,15 +33,17 @@ class ItemDetailsViewController: UIViewController {
     @IBAction func onClickBtnAddToBasket(_ sender: Any) {
         
         if let data = UserDefaults.standard.value(forKey:"BASKET") as? Data {
-            var oldBasket = try? PropertyListDecoder().decode(Array<Basket>.self, from: data)
+            let oldBasket = try? PropertyListDecoder().decode(Array<Basket>.self, from: data)
             
             basket = oldBasket!
+            
             let newItem = Basket(name: item!.name, qty: 1, total: 100.00)
+            
             basket.append(newItem)
             
         }
         
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(basket), forKey:"BASKET")
+        saveBasket(basket)
         
         _ = navigationController?.popViewController(animated: true)
     }

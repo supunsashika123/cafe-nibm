@@ -14,3 +14,7 @@ struct Basket:Identifiable, Codable {
     var total: Float
 }
 
+func saveBasket(_ basket: [Basket]) {
+    UserDefaults.standard.set(try? PropertyListEncoder().encode(basket), forKey:"BASKET")
+}
+
