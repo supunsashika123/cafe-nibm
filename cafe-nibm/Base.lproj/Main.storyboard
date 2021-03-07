@@ -17,30 +17,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XSQ-yr-cVg">
-                                <rect key="frame" x="40" y="40" width="240" height="320.5"/>
+                                <rect key="frame" x="40" y="40" width="240" height="374.5"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Fisrt name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aQk-Qx-mey">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vsw-r2-eOH">
                                         <rect key="frame" x="0.0" y="60" width="240" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dep-T2-Sek">
                                         <rect key="frame" x="0.0" y="120" width="240" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" textContentType="email"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vRR-gK-EkF">
+                                        <rect key="frame" x="0.0" y="180" width="240" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="phonePad" textContentType="tel"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7HK-RG-r5e">
-                                        <rect key="frame" x="0.0" y="180" width="240" height="40"/>
+                                        <rect key="frame" x="0.0" y="234" width="240" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wxC-1O-BAq">
-                                        <rect key="frame" x="0.0" y="240" width="240" height="40"/>
+                                        <rect key="frame" x="0.0" y="294" width="240" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="eNl-Sl-GXl"/>
                                         </constraints>
@@ -50,7 +55,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRl-B8-ISo">
-                                        <rect key="frame" x="0.0" y="300" width="240" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="354" width="240" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="systemRedColor"/>
                                         <nil key="highlightedColor"/>
@@ -78,6 +83,7 @@
                         <outlet property="errorLabel" destination="GRl-B8-ISo" id="3Sa-bT-Mpy"/>
                         <outlet property="firstNameTextField" destination="aQk-Qx-mey" id="3Gs-8i-7E6"/>
                         <outlet property="lastNameTextField" destination="Vsw-r2-eOH" id="WxK-k6-Qln"/>
+                        <outlet property="mobileTextField" destination="vRR-gK-EkF" id="zqW-2D-sZs"/>
                         <outlet property="passwordTextField" destination="7HK-RG-r5e" id="Brw-th-uZ3"/>
                         <outlet property="signUpButton" destination="wxC-1O-BAq" id="dlT-1y-OsW"/>
                     </connections>
@@ -216,7 +222,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7FN-ZP-ufb">
-                                <rect key="frame" x="20" y="80.5" width="280" height="41"/>
+                                <rect key="frame" x="20" y="80.5" width="280" height="61.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello : Supun Sashika" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPg-vs-lBn">
                                         <rect key="frame" x="0.0" y="0.0" width="280" height="20.5"/>
@@ -226,6 +232,12 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email : supun.eternal@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ye4-aH-aMu">
                                         <rect key="frame" x="0.0" y="20.5" width="280" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hR3-Ox-MMM">
+                                        <rect key="frame" x="0.0" y="41" width="280" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -246,6 +258,7 @@
                     <tabBarItem key="tabBarItem" title="Account" id="B28-FF-u69"/>
                     <connections>
                         <outlet property="lblEmail" destination="ye4-aH-aMu" id="Df3-mO-TQI"/>
+                        <outlet property="lblMobile" destination="hR3-Ox-MMM" id="IPC-Y5-9Mu"/>
                         <outlet property="lblUserName" destination="PPg-vs-lBn" id="UCn-zy-m2B"/>
                     </connections>
                 </viewController>

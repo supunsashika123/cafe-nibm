@@ -16,9 +16,12 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var mobileTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var errorLabel: UILabel!
+    
+    let userDefaults = UserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +35,7 @@ class SignUpViewController: UIViewController {
     }
     
     func validateForm() -> String? {
-        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+        if firstNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || lastNameTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || mobileTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" || emailTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
             return "Please fill all fields!"
         }
         return nil
@@ -48,23 +51,29 @@ class SignUpViewController: UIViewController {
             let email = emailTextField.text!
             let firstName = firstNameTextField.text!
             let lastName = lastNameTextField.text!
+            let mobile = mobileTextField.text!
             let password = passwordTextField.text!
+            
+            signUpButton.setTitle("Please wait...",for: .normal)
             
             Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
                 
                 if err != nil {
                     print(err!)
+                    self.signUpButton.setTitle("Sign Up",for: .normal)
                     self.showError(err!.localizedDescription)
                 }
                 else {
                     let db = Firestore.firestore()
                     
-                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName,"email":email, "uid":result!.user.uid]) { (err) in
+                    db.collection("users").addDocument(data: ["firstname":firstName, "lastname":lastName,"email":email,"mobile":mobile, "uid":result!.user.uid]) { (err) in
                         
                         if err != nil {
                             self.showError("Error saving user!")
                         }
                     }
+                    
+                    self.userDefaults.setValue(result!.user.uid,forKey: "USER_ID")
                     
                     self.navigateHome()
                 }
