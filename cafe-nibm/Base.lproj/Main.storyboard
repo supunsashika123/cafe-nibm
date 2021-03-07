@@ -207,7 +207,7 @@
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="73.660714285714278"/>
         </scene>
-        <!--Account-->
+        <!--Profile-->
         <scene sceneID="YfK-ed-tDh">
             <objects>
                 <viewController id="F1z-fV-Bn8" customClass="AccountViewController" customModule="cafe_nibm" customModuleProvider="target" sceneMemberID="viewController">
@@ -264,7 +264,9 @@
                             <constraint firstItem="7FN-ZP-ufb" firstAttribute="leading" secondItem="ELZ-pZ-Kz6" secondAttribute="leading" constant="20" id="qfc-4G-Uvg"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" id="B28-FF-u69"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="myAccountIcon" id="B28-FF-u69">
+                        <inset key="imageInsets" minX="-5" minY="-5" maxX="-5" maxY="-5"/>
+                    </tabBarItem>
                     <connections>
                         <outlet property="btnSignOut" destination="cZE-sw-bW5" id="dkb-bb-y1Q"/>
                         <outlet property="lblEmail" destination="ye4-aH-aMu" id="Df3-mO-TQI"/>
@@ -334,24 +336,94 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="jHd-cE-1lo">
+                                <rect key="frame" x="141.5" y="221.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2jM-JK-RQk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sZV-ol-sSw" firstAttribute="leading" secondItem="2jM-JK-RQk" secondAttribute="leading" constant="5" id="43C-jI-wOO"/>
                             <constraint firstItem="2jM-JK-RQk" firstAttribute="trailing" secondItem="sZV-ol-sSw" secondAttribute="trailing" constant="5" id="4ZJ-5v-iDq"/>
+                            <constraint firstItem="jHd-cE-1lo" firstAttribute="centerX" secondItem="dv8-EX-lVT" secondAttribute="centerX" id="YJd-20-nXw"/>
+                            <constraint firstItem="jHd-cE-1lo" firstAttribute="centerY" secondItem="dv8-EX-lVT" secondAttribute="centerY" id="iZn-bQ-EWT"/>
                             <constraint firstItem="sZV-ol-sSw" firstAttribute="top" secondItem="2jM-JK-RQk" secondAttribute="top" constant="100" id="qDp-Ut-eI0"/>
                             <constraint firstItem="2jM-JK-RQk" firstAttribute="bottom" secondItem="sZV-ol-sSw" secondAttribute="bottom" id="qrg-S2-lst"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="oFY-du-90A"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="homeIcon" id="oFY-du-90A">
+                        <inset key="imageInsets" minX="-5" minY="-5" maxX="-5" maxY="-5"/>
+                    </tabBarItem>
                     <connections>
+                        <outlet property="spinner" destination="jHd-cE-1lo" id="m3z-Kz-s29"/>
                         <outlet property="tblItems" destination="sZV-ol-sSw" id="PVc-1y-L94"/>
+                        <segue destination="84x-DE-UpO" kind="show" identifier="showItemDetails" id="KAg-KD-0Cb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qz6-Rb-hhT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3502.5" y="-235"/>
+        </scene>
+        <!--Item Details View Controller-->
+        <scene sceneID="nVg-bm-Bo5">
+            <objects>
+                <viewController id="84x-DE-UpO" customClass="ItemDetailsViewController" customModule="cafe_nibm" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qiB-nt-pjy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="7ew-ck-6kM">
+                                <rect key="frame" x="10" y="20" width="300" height="98"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Name : Whatever" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9y-Jy-PB0">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is the description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HN7-Ul-6Bh">
+                                        <rect key="frame" x="0.0" y="40.5" width="300" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price : 120.00 LKR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8N-vY-8Ln">
+                                        <rect key="frame" x="0.0" y="77.5" width="300" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHf-rx-YGM">
+                                <rect key="frame" x="112.5" y="410" width="95" height="30"/>
+                                <state key="normal" title="Add to basket"/>
+                                <connections>
+                                    <action selector="onClickBtnAddToBasket:" destination="84x-DE-UpO" eventType="touchUpInside" id="JuJ-dA-za6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="gxw-xD-P7H"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="7ew-ck-6kM" firstAttribute="top" secondItem="gxw-xD-P7H" secondAttribute="top" constant="20" id="A9i-CF-rmR"/>
+                            <constraint firstItem="gxw-xD-P7H" firstAttribute="trailing" secondItem="7ew-ck-6kM" secondAttribute="trailing" constant="10" id="FPm-LD-ne5"/>
+                            <constraint firstItem="EHf-rx-YGM" firstAttribute="centerX" secondItem="qiB-nt-pjy" secondAttribute="centerX" id="GTc-VF-FOH"/>
+                            <constraint firstItem="gxw-xD-P7H" firstAttribute="bottom" secondItem="EHf-rx-YGM" secondAttribute="bottom" constant="20" id="Joa-Dc-0R1"/>
+                            <constraint firstItem="7ew-ck-6kM" firstAttribute="leading" secondItem="gxw-xD-P7H" secondAttribute="leading" constant="10" id="kWa-1m-gh2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ErH-oZ-PrJ"/>
+                    <connections>
+                        <outlet property="btnAddToBasket" destination="EHf-rx-YGM" id="efA-PF-ztZ"/>
+                        <outlet property="lblDescription" destination="HN7-Ul-6Bh" id="bMt-cR-LiW"/>
+                        <outlet property="lblPrice" destination="e8N-vY-8Ln" id="L93-DC-byW"/>
+                        <outlet property="lblTitle" destination="g9y-Jy-PB0" id="qOY-fP-CDl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IGt-zf-iR9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4318" y="-214"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZFL-wP-5nn">
@@ -373,7 +445,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="homeIcon" width="15" height="15"/>
         <image name="logo" width="320" height="320"/>
+        <image name="myAccountIcon" width="15" height="15"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -20,6 +20,7 @@
 		EC6F99B025F40921000C6269 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F99AF25F40921000C6269 /* Constants.swift */; };
 		EC6F99CB25F4AF45000C6269 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F99CA25F4AF45000C6269 /* AccountViewController.swift */; };
 		EC6F99D025F4DAC8000C6269 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F99CF25F4DAC8000C6269 /* Items.swift */; };
+		EC6F99EA25F4EE51000C6269 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F99E925F4EE51000C6269 /* ItemDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		EC6F99AF25F40921000C6269 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EC6F99CA25F4AF45000C6269 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		EC6F99CF25F4DAC8000C6269 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
+		EC6F99E925F4EE51000C6269 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				EC29811725F3E77800BFD09F /* LoginViewController.swift */,
 				EC29811A25F3E78000BFD09F /* HomeViewController.swift */,
 				EC6F99CA25F4AF45000C6269 /* AccountViewController.swift */,
+				EC6F99E925F4EE51000C6269 /* ItemDetailsViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			files = (
 				EC6F99D025F4DAC8000C6269 /* Items.swift in Sources */,
 				EC29810025F3C88C00BFD09F /* AppDelegate.swift in Sources */,
+				EC6F99EA25F4EE51000C6269 /* ItemDetailsViewController.swift in Sources */,
 				EC29811525F3E74200BFD09F /* SignUpViewController.swift in Sources */,
 				EC6F99CB25F4AF45000C6269 /* AccountViewController.swift in Sources */,
 				EC29811825F3E77800BFD09F /* LoginViewController.swift in Sources */,
