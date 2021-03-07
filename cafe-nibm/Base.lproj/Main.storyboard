@@ -288,22 +288,49 @@
                                 <rect key="frame" x="5" y="100" width="310" height="331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="uKH-CQ-ECX">
-                                        <rect key="frame" x="0.0" y="28" width="310" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="74" id="uKH-CQ-ECX" customClass="ItemsTableCell" customModule="cafe_nibm" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="310" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uKH-CQ-ECX" id="t67-Mi-F0X">
-                                            <rect key="frame" x="0.0" y="0.0" width="310" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="310" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ6-0q-RqF">
-                                                    <rect key="frame" x="34" y="5" width="42" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120.00 LKR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKl-Q3-uba">
+                                                    <rect key="frame" x="213.5" y="10" width="86.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="k47-vc-BXI">
+                                                    <rect key="frame" x="10" y="10" width="132" height="48.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chicken Burger" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WJ6-0q-RqF">
+                                                            <rect key="frame" x="0.0" y="0.0" width="132" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kc2-Dr-yMZ">
+                                                            <rect key="frame" x="0.0" y="30.5" width="132" height="18"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HKl-Q3-uba" firstAttribute="top" secondItem="t67-Mi-F0X" secondAttribute="top" constant="10" id="5UW-H0-cUF"/>
+                                                <constraint firstItem="k47-vc-BXI" firstAttribute="leading" secondItem="t67-Mi-F0X" secondAttribute="leading" constant="10" id="BQj-yJ-7w2"/>
+                                                <constraint firstAttribute="trailing" secondItem="HKl-Q3-uba" secondAttribute="trailing" constant="10" id="MNR-t9-t37"/>
+                                                <constraint firstItem="k47-vc-BXI" firstAttribute="top" secondItem="t67-Mi-F0X" secondAttribute="top" constant="10" id="cNR-9s-37t"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="info" destination="Kc2-Dr-yMZ" id="Hr2-MZ-NcE"/>
+                                            <outlet property="price" destination="HKl-Q3-uba" id="VEJ-QO-N6E"/>
+                                            <outlet property="title" destination="WJ6-0q-RqF" id="FzP-1n-EHt"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -324,7 +351,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qz6-Rb-hhT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3503" y="-234"/>
+            <point key="canvasLocation" x="3502.5" y="-235"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZFL-wP-5nn">

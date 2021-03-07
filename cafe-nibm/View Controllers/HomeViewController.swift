@@ -13,6 +13,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tblItems: UITableView!
     
+    
     @Published var items = [Item]()
     
     let userDefaults = UserDefaults()
@@ -24,6 +25,7 @@ class HomeViewController: UIViewController {
             self.tblItems.reloadData()
         }
         
+        tblItems.rowHeight = 70
         tblItems.delegate = self
         tblItems.dataSource = self
         
@@ -70,12 +72,19 @@ extension HomeViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ItemsTableCell
         
-        cell.textLabel?.text = items[indexPath.row].name
+        let itemData = items[indexPath.row]
+        
+        cell.title?.text = itemData.name
         
         return cell
     }
     
 }
 
+class ItemsTableCell: UITableViewCell {
+    @IBOutlet weak var title : UILabel!
+    @IBOutlet weak var info : UILabel!
+    @IBOutlet weak var price : UILabel!
+}
