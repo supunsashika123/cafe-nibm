@@ -50,9 +50,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func navigateHome() {
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController) as? HomeViewController
+        let tabViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.tabBarController)
         
-        view.window?.rootViewController = homeViewController
+        view.window?.rootViewController = tabViewController
         view.window?.makeKeyAndVisible()
     }
 
@@ -66,6 +66,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let email = usernameTextField.text!
             let password = passwordTextField.text!
             
+            self.view.endEditing(true)
             spinner.startAnimating()
             
             Auth.auth().signIn(withEmail: email, password: password) { (result, err) in

@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             
-            let rootVC = storyboard.instantiateViewController(identifier: Constants.Storyboard.homeViewController)
+            let rootVC = storyboard.instantiateViewController(identifier: Constants.Storyboard.tabBarController)
             
             let rootNC = UINavigationController(rootViewController: rootVC)
             rootNC.setNavigationBarHidden(true, animated: false)

@@ -8,7 +8,6 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    @IBOutlet weak var homeLabel: UILabel!
     @IBOutlet weak var btnSignOut: UIButton!
     
     let userDefaults = UserDefaults()
@@ -16,8 +15,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let user = userDefaults.value(forKey: "USER_ID")
-        print(user!)
+//        let user = userDefaults.value(forKey: "USER_ID")
+        
 //        homeLabel.text = user.name
     }
     
