@@ -23,6 +23,7 @@
 		EC6F99EA25F4EE51000C6269 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F99E925F4EE51000C6269 /* ItemDetailsViewController.swift */; };
 		EC6F99ED25F4FA8D000C6269 /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F99EC25F4FA8D000C6269 /* Basket.swift */; };
 		EC981EC82635D78000ADE1A3 /* OrderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC981EC72635D78000ADE1A3 /* OrderListViewController.swift */; };
+		EC981ECB2635DE5100ADE1A3 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC981ECA2635DE5100ADE1A3 /* Order.swift */; };
 		ECF1FD162635559800A755B2 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF1FD152635559800A755B2 /* ForgotPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		EC6F99E925F4EE51000C6269 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		EC6F99EC25F4FA8D000C6269 /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		EC981EC72635D78000ADE1A3 /* OrderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListViewController.swift; sourceTree = "<group>"; };
+		EC981ECA2635DE5100ADE1A3 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		ECF1FD152635559800A755B2 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = ../../ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 			children = (
 				EC6F99CF25F4DAC8000C6269 /* Item.swift */,
 				EC6F99EC25F4FA8D000C6269 /* Basket.swift */,
+				EC981ECA2635DE5100ADE1A3 /* Order.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				EC981EC82635D78000ADE1A3 /* OrderListViewController.swift in Sources */,
 				EC29811825F3E77800BFD09F /* LoginViewController.swift in Sources */,
 				EC6F99B025F40921000C6269 /* Constants.swift in Sources */,
+				EC981ECB2635DE5100ADE1A3 /* Order.swift in Sources */,
 				EC29810225F3C88C00BFD09F /* SceneDelegate.swift in Sources */,
 				EC29811B25F3E78000BFD09F /* HomeViewController.swift in Sources */,
 			);
