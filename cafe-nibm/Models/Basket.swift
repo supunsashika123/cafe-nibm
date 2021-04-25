@@ -12,9 +12,17 @@ struct Basket:Identifiable, Codable {
     var name: String
     var qty: Float
     var total: Float
+    
+    func convertToDictionary() -> [String : Any] {
+        let dic: [String: Any] = [
+            "name":self.name,
+            "qty":self.qty,
+            "total":self.total
+        ]
+        return dic
+    }
 }
 
 func saveBasket(_ basket: [Basket]) {
     UserDefaults.standard.set(try? PropertyListEncoder().encode(basket), forKey:"BASKET")
 }
-

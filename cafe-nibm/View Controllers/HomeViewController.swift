@@ -9,6 +9,17 @@ import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+extension Array {
+    public func toDictionary<Key: Hashable>(with selectKey: (Element) -> Key) -> [Key:Element] {
+        var dict = [Key:Element]()
+        for element in self {
+            dict[selectKey(element)] = element
+        }
+        return dict
+    }
+}
+
+
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var tblItems: UITableView!
@@ -23,7 +34,6 @@ class HomeViewController: UIViewController {
     
     
     override func viewDidAppear(_ animated: Bool) {
-        
         if let data = UserDefaults.standard.value(forKey:"BASKET") as? Data {
             let userBasket = try? PropertyListDecoder().decode(Array<Basket>.self, from: data)
             
@@ -97,11 +107,27 @@ class HomeViewController: UIViewController {
     }
     
     
+    
     @IBAction func onPlaceOrderBtnClick(_ sender: Any) {
         
-        let db = Firestore.firestore()
-        db.collection("orders").addDocument(data: ["items":basket])
+        let data = userDefaults.value(forKey: "BASKET") as? Data
+        let basketItemsArray = try? PropertyListDecoder().decode(Array<Basket>.self, from: data!)
+        let basketItems = basketItemsArray!.map { $0.convertToDictionary() }
         
+        let userId = userDefaults.value(forKey: "USER_ID") as? String
+        
+        //calculate total for order
+        var totalPrice:Float = 0
+        
+        for i in 0..<basketItemsArray!.count {
+            totalPrice += basketItemsArray![i].total
+        }
+        
+        let db = Firestore.firestore()
+        db.collection("orders").addDocument(data: ["date":Date(),"items":basketItems,"user_id":userId!,"total_price":totalPrice])
+        
+        userDefaults.removeObject(forKey: "BASKET")
+      
     }
 }
 
@@ -114,10 +140,6 @@ extension HomeViewController: UITableViewDelegate {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    
-    
-    
     
 }
 
@@ -210,5 +232,5 @@ class BasketTableCell: UITableViewCell {
         }
     }
     
-
+    
 }
