@@ -10,7 +10,7 @@ import Foundation
 struct Basket:Identifiable, Codable {
     var id: String? = UUID().uuidString
     var name: String
-    var qty: Float
+    var qty: Int
     var total: Float
     
     func convertToDictionary() -> [String : Any] {

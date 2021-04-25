@@ -124,7 +124,7 @@ class HomeViewController: UIViewController {
         }
         
         let db = Firestore.firestore()
-        db.collection("orders").addDocument(data: ["date":Date(),"items":basketItems,"user_id":userId!,"total_price":totalPrice])
+        db.collection("orders").addDocument(data: ["date":Date(),"items":basketItems,"user_id":userId!,"total_price":totalPrice,"status":"NEW"])
         
         userDefaults.removeObject(forKey: "BASKET")
       

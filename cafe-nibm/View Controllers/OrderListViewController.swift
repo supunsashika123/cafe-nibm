@@ -43,7 +43,7 @@ class OrderListViewController: UIViewController {
                     do {
                        
                         let objItem = try itm.data(as: Order.self)
-                        print(objItem)
+                        
                         self.items.append(objItem!)
                     } catch  {
                         print("parse error!")
@@ -59,16 +59,21 @@ class OrderListViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let destination = segue.destination as? OrderDetailsViewController {
+            destination.order = items[(tblItems.indexPathForSelectedRow?.row)!]
+        }
+    }
+    
 }
+
 
 extension OrderListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //        if(tableView == self.tblItems) {
-        //            performSegue(withIdentifier: "showItemDetails", sender: self)
-        //        }
-        //
-        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "showOrderDetails", sender: self)
+
     }
     
 }
