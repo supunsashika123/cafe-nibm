@@ -22,6 +22,7 @@
 		EC6F99D025F4DAC8000C6269 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F99CF25F4DAC8000C6269 /* Item.swift */; };
 		EC6F99EA25F4EE51000C6269 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F99E925F4EE51000C6269 /* ItemDetailsViewController.swift */; };
 		EC6F99ED25F4FA8D000C6269 /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6F99EC25F4FA8D000C6269 /* Basket.swift */; };
+		ECF1FD162635559800A755B2 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF1FD152635559800A755B2 /* ForgotPasswordViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		EC6F99CF25F4DAC8000C6269 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EC6F99E925F4EE51000C6269 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		EC6F99EC25F4FA8D000C6269 /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
+		ECF1FD152635559800A755B2 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = ../../ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				EC29811425F3E74200BFD09F /* SignUpViewController.swift */,
+				ECF1FD152635559800A755B2 /* ForgotPasswordViewController.swift */,
 				EC29811725F3E77800BFD09F /* LoginViewController.swift */,
 				EC29811A25F3E78000BFD09F /* HomeViewController.swift */,
 				EC6F99CA25F4AF45000C6269 /* AccountViewController.swift */,
@@ -256,6 +259,7 @@
 			files = (
 				EC6F99ED25F4FA8D000C6269 /* Basket.swift in Sources */,
 				EC6F99D025F4DAC8000C6269 /* Item.swift in Sources */,
+				ECF1FD162635559800A755B2 /* ForgotPasswordViewController.swift in Sources */,
 				EC29810025F3C88C00BFD09F /* AppDelegate.swift in Sources */,
 				EC6F99EA25F4EE51000C6269 /* ItemDetailsViewController.swift in Sources */,
 				EC29811525F3E74200BFD09F /* SignUpViewController.swift in Sources */,

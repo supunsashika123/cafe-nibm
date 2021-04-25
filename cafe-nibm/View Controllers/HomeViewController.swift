@@ -98,6 +98,10 @@ class HomeViewController: UIViewController {
     
     
     @IBAction func onPlaceOrderBtnClick(_ sender: Any) {
+        
+        let db = Firestore.firestore()
+        db.collection("orders").addDocument(data: ["items":basket])
+        
     }
 }
 
