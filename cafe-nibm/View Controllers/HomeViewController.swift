@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
+import CoreLocation
 
 extension Array {
     public func toDictionary<Key: Hashable>(with selectKey: (Element) -> Key) -> [Key:Element] {
@@ -26,6 +27,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var tblBasket: UITableView!
     @IBOutlet weak var btnPlaceOrder: UIButton!
+    
+    var locationManager : CLLocationManager = CLLocationManager()
+
     
     @Published var items = [Item]()
     var basket: [Basket] = []
@@ -48,6 +52,7 @@ class HomeViewController: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -67,6 +72,17 @@ class HomeViewController: UIViewController {
         tblBasket.dataSource = self
         
         btnPlaceOrder.isHidden = true
+        
+        locationManager.delegate = self
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        let geofenceRegionCenter = CLLocationCoordinate2DMake(9.991674, 76.348801)
+        let geofenceRegion = CLCircularRegion(center: geofenceRegionCenter, radius: 100, identifier: "notifyOnEnter")
+        geofenceRegion.notifyOnEntry = true
+        geofenceRegion.notifyOnExit = false
+        print("starting monitoring")
+        locationManager.startMonitoring(for: geofenceRegion)
     }
     
     
@@ -128,6 +144,35 @@ class HomeViewController: UIViewController {
         
         userDefaults.removeObject(forKey: "BASKET")
       
+    }
+}
+
+extension HomeViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        
+        print("Entered")
+        let userId = userDefaults.value(forKey: "USER_ID") as? String
+        let db = Firestore.firestore()
+        
+        db.collection("orders")
+            .whereField("user_id", isEqualTo: userId!)
+            .whereField("status", isEqualTo: "READY")
+            .getDocuments { (snapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for itm in snapshot!.documents {
+                        do {
+                            let objItem = try itm.data(as: Order.self)
+                            
+                            db.collection("orders").document((objItem?.id!)!).setData(["status":"ARRIVING"],merge: true)
+                        } catch  {
+                            print("parse error!")
+                        }
+                    }
+                }
+            }
+        
     }
 }
 

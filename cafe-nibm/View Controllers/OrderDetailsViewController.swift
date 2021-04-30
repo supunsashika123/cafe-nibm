@@ -45,9 +45,6 @@ class OrderDetailsViewController: UIViewController {
         }
         
         
-        
-    
-        
     }
     
     @IBAction func backBtnPress(_ sender: Any) {
